@@ -11,7 +11,7 @@ class Login2ViewController: UIViewController {
         super.viewDidLoad()
         setupSUbiews()    // Выстраиваем иерархию сабвьюх
         setupLayout()    // Задаем верстку
-        
+        view.backgroundColor = .white
         
         buttonLogin.addAction(UIAction(handler: { _ in
             

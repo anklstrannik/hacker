@@ -85,15 +85,47 @@ class Login2ViewController: UIViewController {
 
 
 extension Login2ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder() // Скрыть клавиатуру по нажатию на "Return"
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder() // Скрыть клавиатуру по нажатию на "Return"
+//        if textField == textFieldLogin {
+//            print("login")
+//        } else if textField == textFieldPassword {
+//            print("Password")
+//        }
+//        print("ВВеденный логин: \(textField.text ?? "")")
+//        return true
+//    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.accessibilityElementDidLoseFocus()
         if textField == textFieldLogin {
             print("login")
+            if textField.hasText {
+                textField.borderStyle = .roundedRect
+                print(textField.text)
+            }
+            else {
+                print(textField.text)
+                textField.placeholder = " You need to enter login"
+                textField.borderStyle = .none
+                textFieldLogin.layer.borderColor = UIColor.red.cgColor
+                textFieldLogin.layer.borderWidth = 1
+                textFieldLogin.layer.cornerRadius = 5
+            }
+                
         } else if textField == textFieldPassword {
             print("Password")
+            if textField.hasText {
+                textField.borderStyle = .roundedRect
+                
+            }
+            else {
+                textField.placeholder = " You need to enter Password"
+                textField.borderStyle = .none
+                textFieldPassword.layer.borderColor = UIColor.red.cgColor
+                textFieldPassword.layer.borderWidth = 1
+                textFieldPassword.layer.cornerRadius = 5
+            }
         }
-        print("ВВеденный логин: \(textField.text ?? "")")
-        return true
     }
 }
 
